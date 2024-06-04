@@ -248,6 +248,8 @@ int MGmol<OrbitalsType>::dumprestartFile(OrbitalsType** orbitals, Ions& ions,
     s << count;
     filename += s.str();
 
+    filename += "_mdstep_" + std::to_string(md_iteration_);
+
     HDFrestart h5file(filename, myPEenv, gdim, ct.out_restart_file_type);
 
     OrbitalsType previous_orbitals("ForDumping", **orbitals, false);
